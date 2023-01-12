@@ -242,7 +242,13 @@ public class SwerveDrivetrainModel {
      * @param chassisSpeeds The desired SwerveModule states.
      */
     public void setModuleStates(ChassisSpeeds chassisSpeeds) {
+	    // tbdrms xyzzy
+        System.out.format("vx=%f, vy=%f, o=%f\n",chassisSpeeds.vxMetersPerSecond,chassisSpeeds.vyMetersPerSecond,chassisSpeeds.omegaRadiansPerSecond);
         states = SwerveConstants.KINEMATICS.toSwerveModuleStates(chassisSpeeds);
+        for (int i=0; i<states.length; i++) { 
+            SwerveModuleState state = states[i];
+            System.out.format("i=%d speed m/s=%f angle=%+5.1f\n", i, state.speedMetersPerSecond, state.angle.getDegrees());
+        }
     }
     public void driveClean(double xTranslation, double yTranslation, double rotation){
         double rot =KeepAngle(xTranslation, yTranslation, rotation);

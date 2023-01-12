@@ -71,8 +71,11 @@ public class GyroTracker {
         double period = m_prevTimeSeconds >= 0 ? currentTimeSeconds - m_prevTimeSeconds : 0.0;
         m_prevTimeSeconds = currentTimeSeconds;
         m_previousVelocity = m_velocityVector;
-
-        m_velocityVector = new Translation2d(accelerationArray[0]* period +m_previousVelocity.getX(), accelerationArray[1]*period+m_previousVelocity.getY());
+        //tbdrms xyzzy
+        m_velocityVector = new Translation2d(
+            accelerationArray[0]* period, accelerationArray[1]*period);
+        
+        //m_velocityVector = new Translation2d(accelerationArray[0]* period +m_previousVelocity.getX(), accelerationArray[1]*period+m_previousVelocity.getY());
         
         return m_velocityVector;
 

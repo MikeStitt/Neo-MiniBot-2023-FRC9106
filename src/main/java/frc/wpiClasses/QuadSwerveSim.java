@@ -191,6 +191,9 @@ public class QuadSwerveSim {
         Twist2d motionThisLoop = new Twist2d(posChange.getX(), posChange.getY(), rotPosChange);
 
         m_curPose = m_curPose.exp(motionThisLoop);
+		// tbdrms xyzzy
+        System.out.format("dtheta=%+06.3f dx=%+06.3f dy=%+06.3f x=%+06.3f y=%+06.3f\n",
+            motionThisLoop.dtheta, motionThisLoop.dx, motionThisLoop.dy, m_curPose.getX(), m_curPose.getY());
     }
 
     /**
